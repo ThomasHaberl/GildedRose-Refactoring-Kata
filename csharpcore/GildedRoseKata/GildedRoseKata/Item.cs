@@ -1,4 +1,4 @@
-﻿namespace csharpcore
+﻿namespace GildedRoseKata
 {
     /// <summary>
     /// An item in the Gilded Rose inventory.

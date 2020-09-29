@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRoseKata", "GildedRoseKata\GildedRoseKata.csproj", "{761FB6FC-30A7-42CB-B589-152DC54DE2F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GildedRoseKataTests", "GildedRoseKataTests\GildedRoseKataTests.csproj", "{95700C01-D455-4823-9DE4-D44A8B60EC03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{761FB6FC-30A7-42CB-B589-152DC54DE2F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{761FB6FC-30A7-42CB-B589-152DC54DE2F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{761FB6FC-30A7-42CB-B589-152DC54DE2F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{761FB6FC-30A7-42CB-B589-152DC54DE2F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95700C01-D455-4823-9DE4-D44A8B60EC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95700C01-D455-4823-9DE4-D44A8B60EC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95700C01-D455-4823-9DE4-D44A8B60EC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95700C01-D455-4823-9DE4-D44A8B60EC03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {668E6F7B-7DF7-46DF-BD10-2DAFFDC1E0CD}
+	EndGlobalSection
+EndGlobal

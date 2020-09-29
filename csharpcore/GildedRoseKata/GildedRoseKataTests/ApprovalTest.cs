@@ -1,12 +1,12 @@
-﻿using Xunit;
+﻿using ApprovalTests;
+using ApprovalTests.Reporters;
+using GildedRoseKata;
 using System;
 using System.IO;
 using System.Text;
-using ApprovalTests;
-using ApprovalTests.Reporters;
-using ApprovalTests.Reporters.Windows;
+using Xunit;
 
-namespace csharpcore
+namespace GildedRoseKataTests
 {
     [UseReporter(typeof(VisualStudioReporter))]
     public class ApprovalTest

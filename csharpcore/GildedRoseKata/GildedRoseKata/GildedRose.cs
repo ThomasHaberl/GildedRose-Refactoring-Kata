@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace csharpcore
+namespace GildedRoseKata
 {
     /// <summary>
     /// The Gilded Rose inventory of items for sale.
