@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GildedRoseKata
 {
@@ -14,6 +15,12 @@ namespace GildedRoseKata
         /// </summary>
         private readonly IList<Item> Items;
 
+        /// <summary>
+        /// The maximum possible quality value for items in the inventory.
+        /// </summary>
+        private const int MaximumQuality = 50;
+
+
 
         /// <summary>
         /// Initializes a new instance with the provided list of items.
@@ -25,81 +32,69 @@ namespace GildedRoseKata
         }
 
 
+
         /// <summary>
         /// Updates the quality value of the items in the inventory.
         /// </summary>
         public void UpdateQuality()
         {
-            for (var i = 0; i < Items.Count; i++)
+            foreach (var item in Items)
             {
-                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                switch (item.Name)
                 {
-                    if (Items[i].Quality > 0)
-                    {
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                    case "Aged Brie":
+                        if (item.SellIn > 0)
                         {
-                            Items[i].Quality = Items[i].Quality - 1;
-                        }
-                    }
-                }
-                else
-                {
-                    if (Items[i].Quality < 50)
-                    {
-                        Items[i].Quality = Items[i].Quality + 1;
-
-                        if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                            if (Items[i].SellIn < 11)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
-                            }
-
-                            if (Items[i].SellIn < 6)
-                            {
-                                if (Items[i].Quality < 50)
-                                {
-                                    Items[i].Quality = Items[i].Quality + 1;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    Items[i].SellIn = Items[i].SellIn - 1;
-                }
-
-                if (Items[i].SellIn < 0)
-                {
-                    if (Items[i].Name != "Aged Brie")
-                    {
-                        if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
-                        {
-                            if (Items[i].Quality > 0)
-                            {
-                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
-                                {
-                                    Items[i].Quality = Items[i].Quality - 1;
-                                }
-                            }
+                            item.Quality = Math.Min(item.Quality + 1, MaximumQuality);
                         }
                         else
                         {
-                            Items[i].Quality = Items[i].Quality - Items[i].Quality;
+                            item.Quality = Math.Min(item.Quality + 2, MaximumQuality);
                         }
-                    }
-                    else
-                    {
-                        if (Items[i].Quality < 50)
+
+                        item.SellIn--;
+
+                        break;
+
+                    case "Backstage passes to a TAFKAL80ETC concert":
+                        if (item.SellIn > 10)
                         {
-                            Items[i].Quality = Items[i].Quality + 1;
+                            item.Quality = Math.Min(item.Quality + 1, MaximumQuality);
                         }
-                    }
+                        else if (item.SellIn > 5)
+                        {
+                            item.Quality = Math.Min(item.Quality + 2, MaximumQuality);
+                        }
+                        else if (item.SellIn > 0)
+                        {
+                            item.Quality = Math.Min(item.Quality + 3, MaximumQuality);
+                        }
+                        else
+                        {
+                            item.Quality = 0;
+                        }
+
+                        item.SellIn--;
+
+                        break;
+
+                    case "Sulfuras, Hand of Ragnaros":
+                        // No change
+                        break;
+
+                    default:
+                        if (item.SellIn > 0)
+                        {
+                            item.Quality = Math.Max(item.Quality - 1, 0);
+                        }
+                        else
+                        {
+                            item.Quality = Math.Max(item.Quality - 2, 0);
+                        }
+
+                        item.SellIn--;
+
+                        break;
                 }
             }
         }
