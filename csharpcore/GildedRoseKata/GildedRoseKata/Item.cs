@@ -11,9 +11,9 @@ namespace GildedRoseKata
     public class Item
     {
         /// <summary>
-        /// The maximum possible quality value for items in the inventory.
+        /// The maximum possible quality value.
         /// </summary>
-        private const int MaximumQuality = 50;
+        protected const int MaximumQuality = 50;
 
 
 
@@ -26,7 +26,7 @@ namespace GildedRoseKata
         /// </summary>
         public int SellIn { get; set; }
         /// <summary>
-        /// Gets or sets the quality of the item. This value will never be negative or higher than 50.
+        /// Gets or sets the quality of the item. This value should never be negative or higher than 50.
         /// </summary>
         public int Quality { get; set; }
 
@@ -35,7 +35,7 @@ namespace GildedRoseKata
         /// <summary>
         /// Updates the quality of the item under the assumption that one day has passed.
         /// </summary>
-        public void UpdateQuality()
+        public virtual void UpdateQuality()
         {
             switch (Name)
             {
@@ -94,5 +94,46 @@ namespace GildedRoseKata
                     break;
             }
         }
+
+
+
+        public static Item CreateItem(string name, int sellIn, int quality)
+        {
+            switch (name)
+            {
+                case "Aged Brie":
+                    return new AgedBrieItem() { Name = name, SellIn = sellIn, Quality = quality };
+
+                case "Backstage passes to a TAFKAL80ETC concert":
+                    return new BackstagePassItem() { Name = name, SellIn = sellIn, Quality = quality };
+
+                case "Sulfuras, Hand of Ragnaros":
+                    return new LegendaryItem() { Name = name, SellIn = sellIn, Quality = quality };
+
+                default:
+                    return new RegularItem() { Name = name, SellIn = sellIn, Quality = quality };
+            }
+        }
+    }
+
+
+    public class RegularItem
+        : Item
+    {
+    }
+
+    public class AgedBrieItem
+        : Item
+    {
+    }
+
+    public class LegendaryItem
+        : Item
+    {
+    }
+
+    public class BackstagePassItem
+        : Item
+    {
     }
 }

@@ -9,16 +9,16 @@ namespace GildedRoseKata
         {
             // Initialize the list of inventory items
             IList<Item> items = new List<Item>{
-                new Item { Name = "+5 Dexterity Vest", SellIn = 10, Quality = 20 },
-                new Item { Name = "Aged Brie", SellIn = 2, Quality = 0 },
-                new Item { Name = "Elixir of the Mongoose", SellIn = 5, Quality = 7 },
-                new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 80 },
-                new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 80 },
-                new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 15, Quality = 20 },
-                new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 10, Quality = 49 },
-                new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = 5, Quality = 49 },
+                Item.CreateItem("+5 Dexterity Vest", 10, 20),
+                Item.CreateItem("Aged Brie", 2, 0),
+                Item.CreateItem("Elixir of the Mongoose", 5, 7),
+                Item.CreateItem("Sulfuras, Hand of Ragnaros", 0, 80),
+                Item.CreateItem("Sulfuras, Hand of Ragnaros", -1, 80),
+                Item.CreateItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                Item.CreateItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+                Item.CreateItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
 				// This conjured item does not work properly yet
-				new Item { Name = "Conjured Mana Cake", SellIn = 3, Quality = 6 }
+                Item.CreateItem("Conjured Mana Cake", 3, 6),
             };
 
             var app = new GildedRose(items);
