@@ -4,11 +4,9 @@ namespace GildedRoseKata
 {
     /// <summary>
     /// An item in the Gilded Rose inventory.
-    /// 
-    /// --- NOT TO BE MODIFIED ---
     /// </summary>
     [System.Diagnostics.DebuggerDisplay("Name = \"{Name}\", SellIn = {SellIn}, Quality = {Quality}")]
-    public class Item
+    public abstract class Item
     {
         /// <summary>
         /// The maximum possible quality value.
@@ -33,70 +31,19 @@ namespace GildedRoseKata
 
 
         /// <summary>
-        /// Updates the quality of the item under the assumption that one day has passed.
+        /// When implemented in a derived class, updates the quality of the item under the assumption that one day has passed.
         /// </summary>
-        public virtual void UpdateQuality()
-        {
-            switch (Name)
-            {
-                case "Aged Brie":
-                    if (SellIn > 0)
-                    {
-                        Quality = Math.Min(Quality + 1, MaximumQuality);
-                    }
-                    else
-                    {
-                        Quality = Math.Min(Quality + 2, MaximumQuality);
-                    }
-
-                    SellIn--;
-
-                    break;
-
-                case "Backstage passes to a TAFKAL80ETC concert":
-                    if (SellIn > 10)
-                    {
-                        Quality = Math.Min(Quality + 1, MaximumQuality);
-                    }
-                    else if (SellIn > 5)
-                    {
-                        Quality = Math.Min(Quality + 2, MaximumQuality);
-                    }
-                    else if (SellIn > 0)
-                    {
-                        Quality = Math.Min(Quality + 3, MaximumQuality);
-                    }
-                    else
-                    {
-                        Quality = 0;
-                    }
-
-                    SellIn--;
-
-                    break;
-
-                case "Sulfuras, Hand of Ragnaros":
-                    // No change
-                    break;
-
-                default:
-                    if (SellIn > 0)
-                    {
-                        Quality = Math.Max(Quality - 1, 0);
-                    }
-                    else
-                    {
-                        Quality = Math.Max(Quality - 2, 0);
-                    }
-
-                    SellIn--;
-
-                    break;
-            }
-        }
+        public abstract void UpdateQuality();
 
 
 
+        /// <summary>
+        /// Instantiates an item with the provided information.
+        /// </summary>
+        /// <param name="name">The name of the item.</param>
+        /// <param name="sellIn">The number of days left until the item should be sold.</param>
+        /// <param name="quality">The quality of the item. This value should never be negative or higher than 50.</param>
+        /// <returns>The created instance.</returns>
         public static Item CreateItem(string name, int sellIn, int quality)
         {
             switch (name)
@@ -120,20 +67,71 @@ namespace GildedRoseKata
     public class RegularItem
         : Item
     {
+        public override void UpdateQuality()
+        {
+            if (SellIn > 0)
+            {
+                Quality = Math.Max(Quality - 1, 0);
+            }
+            else
+            {
+                Quality = Math.Max(Quality - 2, 0);
+            }
+
+            SellIn--;
+        }
     }
 
     public class AgedBrieItem
         : Item
     {
+        public override void UpdateQuality()
+        {
+            if (SellIn > 0)
+            {
+                Quality = Math.Min(Quality + 1, MaximumQuality);
+            }
+            else
+            {
+                Quality = Math.Min(Quality + 2, MaximumQuality);
+            }
+
+            SellIn--;
+        }
     }
 
     public class LegendaryItem
         : Item
     {
+        public override void UpdateQuality()
+        {
+            // No change
+        }
     }
 
     public class BackstagePassItem
         : Item
     {
+        public override void UpdateQuality()
+        {
+            if (SellIn > 10)
+            {
+                Quality = Math.Min(Quality + 1, MaximumQuality);
+            }
+            else if (SellIn > 5)
+            {
+                Quality = Math.Min(Quality + 2, MaximumQuality);
+            }
+            else if (SellIn > 0)
+            {
+                Quality = Math.Min(Quality + 3, MaximumQuality);
+            }
+            else
+            {
+                Quality = 0;
+            }
+
+            SellIn--;
+        }
     }
 }

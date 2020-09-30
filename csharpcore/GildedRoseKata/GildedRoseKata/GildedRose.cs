@@ -9,8 +9,6 @@ namespace GildedRoseKata
     {
         /// <summary>
         /// The list of items in the inventory.
-        /// 
-        /// --- NOT TO BE MODIFIED ---
         /// </summary>
         private readonly IList<Item> Items;
 
