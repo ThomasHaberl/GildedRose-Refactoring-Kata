@@ -59,6 +59,9 @@ namespace GildedRoseKata
                 case "Sulfuras, Hand of Ragnaros":
                     return new LegendaryItem() { Name = name, SellIn = sellIn, Quality = quality };
 
+                case "Conjured Mana Cake":
+                    return new ConjuredItem() { Name = name, SellIn = sellIn, Quality = quality };
+
                 default:
                     return new RegularItem() { Name = name, SellIn = sellIn, Quality = quality };
             }
@@ -131,6 +134,24 @@ namespace GildedRoseKata
             else
             {
                 Quality = 0;
+            }
+
+            SellIn--;
+        }
+    }
+
+    public class ConjuredItem
+        : Item
+    {
+        public override void UpdateQuality()
+        {
+            if (SellIn > 0)
+            {
+                Quality = Math.Max(Quality - 2, 0);
+            }
+            else
+            {
+                Quality = Math.Max(Quality - 4, 0);
             }
 
             SellIn--;

@@ -17,7 +17,6 @@ namespace GildedRoseKata
                 ItemFactory.CreateItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
                 ItemFactory.CreateItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
                 ItemFactory.CreateItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-				// This conjured item does not work properly yet
                 ItemFactory.CreateItem("Conjured Mana Cake", 3, 6),
             };
 

@@ -320,7 +320,7 @@ namespace GildedRoseKataTests
 
 
         #region Conjured Items (not implemented)
-        /*
+        
         [Fact]
         public void UpdateQuality_WhenItemIsConjured_SellInDecreases()
         {
@@ -392,7 +392,7 @@ namespace GildedRoseKataTests
             Assert.Equal(0, items[1].Quality);
             Assert.Equal(0, items[2].Quality);
         }
-        */
+        
         #endregion
     }
 }
