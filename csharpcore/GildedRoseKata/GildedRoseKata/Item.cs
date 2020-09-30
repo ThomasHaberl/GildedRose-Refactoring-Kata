@@ -34,9 +34,11 @@ namespace GildedRoseKata
         /// When implemented in a derived class, updates the quality of the item under the assumption that one day has passed.
         /// </summary>
         public abstract void UpdateQuality();
+    }
 
 
-
+    public static class ItemFactory
+    {
         /// <summary>
         /// Instantiates an item with the provided information.
         /// </summary>

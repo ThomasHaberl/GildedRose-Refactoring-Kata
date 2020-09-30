@@ -9,16 +9,16 @@ namespace GildedRoseKata
         {
             // Initialize the list of inventory items
             IList<Item> items = new List<Item>{
-                Item.CreateItem("+5 Dexterity Vest", 10, 20),
-                Item.CreateItem("Aged Brie", 2, 0),
-                Item.CreateItem("Elixir of the Mongoose", 5, 7),
-                Item.CreateItem("Sulfuras, Hand of Ragnaros", 0, 80),
-                Item.CreateItem("Sulfuras, Hand of Ragnaros", -1, 80),
-                Item.CreateItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
-                Item.CreateItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
-                Item.CreateItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
+                ItemFactory.CreateItem("+5 Dexterity Vest", 10, 20),
+                ItemFactory.CreateItem("Aged Brie", 2, 0),
+                ItemFactory.CreateItem("Elixir of the Mongoose", 5, 7),
+                ItemFactory.CreateItem("Sulfuras, Hand of Ragnaros", 0, 80),
+                ItemFactory.CreateItem("Sulfuras, Hand of Ragnaros", -1, 80),
+                ItemFactory.CreateItem("Backstage passes to a TAFKAL80ETC concert", 15, 20),
+                ItemFactory.CreateItem("Backstage passes to a TAFKAL80ETC concert", 10, 49),
+                ItemFactory.CreateItem("Backstage passes to a TAFKAL80ETC concert", 5, 49),
 				// This conjured item does not work properly yet
-                Item.CreateItem("Conjured Mana Cake", 3, 6),
+                ItemFactory.CreateItem("Conjured Mana Cake", 3, 6),
             };
 
             var app = new GildedRose(items);
