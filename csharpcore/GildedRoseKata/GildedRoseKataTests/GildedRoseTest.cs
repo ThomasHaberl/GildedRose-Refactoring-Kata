@@ -186,6 +186,7 @@ namespace GildedRoseKataTests
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 2, Quality = 0 },
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 10, Quality = 25 },
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 20, Quality = 50 },
+                new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 30, Quality = 80 },
             };
             GildedRose app = new GildedRose(items);
 
@@ -194,6 +195,7 @@ namespace GildedRoseKataTests
             Assert.Equal(0, items[0].Quality);
             Assert.Equal(25, items[1].Quality);
             Assert.Equal(50, items[2].Quality);
+            Assert.Equal(80, items[3].Quality);
         }
 
         [Fact]
@@ -203,6 +205,7 @@ namespace GildedRoseKataTests
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 0, Quality = 0 },
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = -1, Quality = 25 },
                 new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = -2, Quality = 50 },
+                new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = -10, Quality = 80 },
             };
             GildedRose app = new GildedRose(items);
 
@@ -211,6 +214,7 @@ namespace GildedRoseKataTests
             Assert.Equal(0, items[0].Quality);
             Assert.Equal(25, items[1].Quality);
             Assert.Equal(50, items[2].Quality);
+            Assert.Equal(80, items[3].Quality);
         }
 
         #endregion
