@@ -6,7 +6,7 @@ namespace GildedRoseKata
     /// An item in the Gilded Rose inventory.
     /// </summary>
     [System.Diagnostics.DebuggerDisplay("Name = \"{Name}\", SellIn = {SellIn}, Quality = {Quality}")]
-    public abstract class Item
+    public class Item
     {
         /// <summary>
         /// The maximum possible quality value.
@@ -31,9 +31,12 @@ namespace GildedRoseKata
 
 
         /// <summary>
-        /// When implemented in a derived class, updates the quality of the item under the assumption that one day has passed.
+        /// Updates the quality of the item under the assumption that one day has passed.
         /// </summary>
-        public abstract void UpdateQuality();
+        public virtual void UpdateQuality()
+        {
+            // No change
+        }
     }
 
 
@@ -57,7 +60,7 @@ namespace GildedRoseKata
                     return new BackstagePassItem() { Name = name, SellIn = sellIn, Quality = quality };
 
                 case "Sulfuras, Hand of Ragnaros":
-                    return new LegendaryItem() { Name = name, SellIn = sellIn, Quality = quality };
+                    return new Item() { Name = name, SellIn = sellIn, Quality = quality };
 
                 case "Conjured Mana Cake":
                     return new ConjuredItem() { Name = name, SellIn = sellIn, Quality = quality };
@@ -102,15 +105,6 @@ namespace GildedRoseKata
             }
 
             SellIn--;
-        }
-    }
-
-    public class LegendaryItem
-        : Item
-    {
-        public override void UpdateQuality()
-        {
-            // No change
         }
     }
 
